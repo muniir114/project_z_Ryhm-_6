@@ -218,6 +218,15 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-6 text-center">
+                <img src="https://img.icons8.com/color/100/solar-panel.png" alt="Solar Panel">
+                <p>Panel Status: <span id="panelStatus">--</span></p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="https://img.icons8.com/ios-filled/50/solar-panel.png" />
+                <p><button class="btn btn-outline-success" onclick="toggleSolarPanel()">Enable/Disable Panels</button></p>
+            </div>
+            
         </div>
     </div>
 
@@ -335,6 +344,26 @@
             document.getElementById("dashboard").style.display = "block";
             initDashboard();
         }
+        function toggleSolarPanel() {
+            // Get the current solar panel status from localStorage
+            let panelStatus = localStorage.getItem("panelStatus") || "ON";
+            
+            // Toggle the solar panel status
+            if (panelStatus === "ON") {
+                panelStatus = "OFF";
+            } else {
+                panelStatus = "ON";
+            }
+        
+            // Save the updated status to localStorage
+            localStorage.setItem("panelStatus", panelStatus);
+        
+            // Update the displayed status on the dashboard
+            document.getElementById("panelStatus").textContent = panelStatus;
+            
+            // Optionally, you could change the panel image or add more visual cues here based on the state.
+        }
+        
 
     </script>
 
